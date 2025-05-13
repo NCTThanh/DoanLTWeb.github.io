@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xe McLaren - Hiệu Suất Đỉnh Cao</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <style>
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .car-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+        .car-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .car-details {
+            padding: 15px;
+            text-align: center;
+        }
+        .car-details h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .car-details p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .car-details a.btn {
+            background-color: #182a46;
+            color: #fff;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .car-details a.btn:hover {
+            background-color: #2c60a0;
+            transition: 0.3s;
+        }
+        .main-container
+        {
+            max-width: 1600px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+         nav .nav-link {
+            text-decoration: none;
+            color: #060505;
+            transition: color 0.3s ease;
+            }
+
+       nav .nav-link:hover {
+       color: #ff0000;
+      }
+      .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand img {
+    height: 100px; /* Chiều cao logo */
+    vertical-align: middle;
+    margin-right: 10px; /* Thêm khoảng cách giữa logo và chữ (nếu có) */
+}
+
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav .navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav .nav-item {
+    margin-left: 20px;
+}
+.main-container
+{
+    position: relative; /* Cần thiết cho việc định vị tuyệt đối các phần tử con */
+    overflow: hidden; /* Để ẩn phần chữ chạy khi biến mất */
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    min-height: 480px; /* Đặt chiều cao cố định cho phần hero */
+    margin-bottom: 0; /* Loại bỏ margin dưới hero */
+    box-sizing: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top:100px;
+}
+    </style>
+</head>
+<body>
+    <header >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/mclaren-logo-512x512.png" alt="McLaren Logo" height="100">
+                </a>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="cars.html">Xe McLaren</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="admin/admin.html">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <main class="container mt-5">
+            <h1 class="mb-4 text-center" style="text-align: center;">Khám Phá Các Mẫu Xe McLaren</h1>
+            <div class="car-grid">
+                <div class="car-card">
+                    <img src="images/720S-Coupe_hero_crop-16x9.webp" alt="McLaren 720S">
+                    <div class="car-details">
+                        <h3>McLaren 720S</h3>
+                        <p>Siêu xe với hiệu suất đáng kinh ngạc và thiết kế khí động học tiên tiến.</p>
+                        <a href="car-details.html?model=720s" class="btn">Xem chi tiết</a>  
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="images/2023031033_Artura_Highlight_Hero.webp" alt="McLaren Artura">
+                    <div class="car-details">
+                        <h3>McLaren Artura</h3>
+                        <p>Siêu xe hybrid thế hệ mới, kết hợp sức mạnh động cơ đốt trong và điện.</p>
+                        <a href="car-details.html?model=artura" class="btn">Xem chi tiết</a>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="images/Hero-ext_front-3_4_dark__doors_FINAL-1.jpg-2-1-1024x609.jpg" alt="McLaren Senna">
+                    <div class="car-details">
+                        <h3>McLaren Senna</h3>
+                        <p>Siêu xe tập trung tối đa vào hiệu suất trên đường đua, mang tên huyền thoại Ayrton Senna.</p>
+                        <a href="#" class="btn">Xem chi tiết</a>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="images/mclaren-720s-swae-1-2312.jpg" alt="McLaren 570S Spider">
+                    <div class="car-details">
+                        <h3>McLaren 570S Spider</h3>
+                        <p>Mẫu xe thể thao mui trần mang lại trải nghiệm lái phấn khích và phong cách.</p>
+                        <a href="#" class="btn">Xem chi tiết</a>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="images/mclaren-gt-by-mso-14.jpg" alt="McLaren GT">
+                    <div class="car-details">
+                        <h3>McLaren GT</h3>
+                        <p>Sự kết hợp hoàn hảo giữa hiệu suất siêu xe và khả năng di chuyển thoải mái trên những hành trình dài.</p>
+                        <a href="#" class="btn">Xem chi tiết</a>
+                    </div>
+                </div>
+                <div class="car-card">
+                    <img src="images/mclaren-elva-1.jpg" alt="McLaren Elva">
+                    <div class="car-details">
+                        <h3>McLaren Elva</h3>
+                        <p>Một chiếc roadster tối thượng, không mui và không kính chắn gió, mang đến trải nghiệm lái độc đáo.</p>
+                        <a href="#" class="btn">Xem chi tiết</a>
+                    </div>
+                </div>
+                </div>
+        </main>
+    </div>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <p>&copy; 2025 McLaren Việt Nam. All rights reserved.</p>
+    </footer>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

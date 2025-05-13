@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McLaren Việt Nam - Hiệu Suất Đỉnh Cao</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+
+    <style>
+      
+.hero {
+    position: relative; /* Cần thiết cho việc định vị tuyệt đối các phần tử con */
+    overflow: hidden; /* Để ẩn phần chữ chạy khi biến mất */
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    min-height: 480px; /* Đặt chiều cao cố định cho phần hero */
+    margin-bottom: 0; /* Loại bỏ margin dưới hero */
+    box-sizing: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top:200px;
+   
+
+}
+
+.hero-text-container {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    padding-left: 10px; /* Lề trái 2cm */
+    padding-right: 10px; /* Lề phải 2cm */
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng tổng chiều rộng */
+    z-index: 3;
+}
+
+.hero-text-container h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    animation: FadeInOutFade 13s ease-in-out forwards; /* Đã đổi tên animation */
+    position: relative;
+    opacity: 0;
+}
+
+@keyframes FadeInOutFade {
+    0% { opacity: 0; }
+    30% { opacity: 0; }
+    40% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.hero-text-container p {
+    font-size: 1.2em;
+    margin-top: 0;
+    opacity: 0.8; /* Để chữ "Hiệu suất..." mờ hơn một chút (tùy chọn) */
+}
+
+.hero a.button {
+    background-color: #182a46; 
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    position: absolute;
+    bottom: 30px; /* Đặt ở phía dưới */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Đảm bảo nút ở trên video */
+    opacity: 0.3;
+}
+.hero a.button:hover{
+    transition: 0.3s;
+    background-color: #2c60a0;
+    opacity: 1;
+}
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/mclaren-logo-512x512.png" alt="McLaren Logo" height="100">
+                </a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="index.html">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cars.html">Xe McLaren</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="admin/admin.html">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <main>
+            <section class="hero">
+                <div class="hero-text-container">
+                    <h1>Khám Phá Thế Giới McLaren</h1>
+                </div>
+                <div class="video-overlay" style="border-radius: 20%;">
+                    <video autoplay loop muted >
+                        <source src="video/McLaren 720S RR1000 - Wild Supercar by Ramon Performance.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <a href="cars.html" class="button">Xem các mẫu xe</a>
+            </section>
+            <section class="container mt-5">
+                <h2 style="color: #fff;">Các Mẫu Xe Nổi Bật</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images/720S-Coupe_hero_crop-16x9.webp" class="card-img-top" alt="McLaren 720S">
+                            <div class="card-body">
+                                <h5 class="card-title">McLaren 720S</h5>
+                                <p class="card-text">Siêu xe với hiệu suất đáng kinh ngạc.</p>
+                                <a href="car-details.html" class="btn btn-primary">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images/2023031033_Artura_Highlight_Hero.webp" class="card-img-top" alt="McLaren Artura">
+                            <div class="card-body">
+                                <h5 class="card-title">McLaren Artura</h5>
+                                <p class="card-text">Siêu xe hybrid thế hệ mới.</p>
+                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images/Hero-ext_front-3_4_dark__doors_FINAL-1.jpg-2-1-1024x609.jpg" class="card-img-top" alt="McLaren Senna">
+                            <div class="card-body">
+                                <h5 class="card-title">McLaren Senna</h5>
+                                <p class="card-text">Siêu xe tập trung vào đường đua.</p>
+                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-5">
+                <h2>Bộ Sưu Tập Ảnh</h2>
+                <div class="slideshow-container">
+                    <div class="slide">
+                        <img src="images/hinh1.jnp.webp" style="width:100%">
+                    </div>
+                    <div class="slide">
+                        <img src="images/hinh2.webp" style="width:100%">
+                    </div>
+                    <div class="slide">
+                        <img src="images/hinh3.webp" style="width:100%">
+                    </div>
+                    <div class="slide">
+                        <img src="images/hinh4.webp" style="width:100%">
+                    </div>
+                    <div class="slide">
+                        <img src="images/hinh5.webp" style="width:100%">
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">❮</a>
+                    <a class="next" onclick="plusSlides(1)">❯</a>
+                </div>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="bg-light text-center py-3 mt-5">
+        <p>&copy; 2025 McLaren Việt Nam. All rights reserved.</p>
+    </footer>
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/slideshow.js"></script>
+</body>
+</html>
