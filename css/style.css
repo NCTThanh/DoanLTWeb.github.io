@@ -1,20 +1,49 @@
-/* CSS External - Các style chung cho toàn bộ trang web */
+/* css/style.css */
+
+/* ============================ */
+/* Global Styles & Base Reset   */
+/* ============================ */
 body {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Cần thiết cho việc tính toán kích thước hộp chuẩn */
+    
+    background-image:url(../images/sao.jpg);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
+.navbar-nav {
+    /* Đã có ms-auto trong HTML để đẩy sang phải. */
+    /* Để đẩy nó xa hơn nữa từ mép phải của navbar-collapse, hãy tăng giá trị margin-right */
+    margin-right: 150px; /* ĐIỀU CHỈNH GIÁ TRỊ NÀY theo ý bạn muốn (ví dụ: 50px, 80px, v.v.) */
+}
+
+.navbar .nav-item {
+    position: relative;
+}
+
+/* Đảm bảo quy tắc này nằm sau các quy tắc Bootstrap nếu cần */
+.main-container {
+    max-width: 1600px; /* Đặt giới hạn chiều rộng tối đa cho nội dung chính */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px; /* Padding cho nội dung để không bị dính vào cạnh màn hình */
+    padding-right: 15px;
+    
+    padding-top: 120px;
+}
+
+/* ============================ */
+/* Header & Navbar              */
+/* ============================ */
 header {
     background-color: #f8f9fa;
-    padding: 10px 20px; /* Thêm padding ngang cho cân đối */
     display: flex;
-    align-items: center;
     height: 80px; /* Đặt chiều cao cố định cho header */
     z-index: 1000;
     width: 100%;
-    
     position: fixed;
 }
 
@@ -56,55 +85,335 @@ nav .nav-link:hover {
     color: #ff0000;
 }
 
+.caret {
+    color: #666666;
+    margin-left: 5px;
+}
 
-main {
-    padding: 10px 0; 
+/* ========================================= */
+/* CSS cho nút "Tìm nhà bán lẻ" trên Navbar */
+/* ========================================= */
+
+/* ========================================= */
+/* CSS cho nút "Tìm nhà bán lẻ" trên Navbar */
+/* ========================================= */
+
+.navbar .nav-item .nav-link.btn-retailer {
+    background: linear-gradient(to right, #ff8c00, #ff4500); /* Màu cam gradient */
+    color: white; /* Màu chữ mặc định cho icon và text */
+    width: 45px; /* Chiều rộng ban đầu chỉ đủ cho icon */
+    height: 45px; /* Chiều cao ban đầu chỉ đủ cho icon */
+    border-radius: 50%; /* Hình tròn ban đầu */
+    transition: all 0.3s ease; /* Chuyển động cho tất cả các thuộc tính */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Quan trọng: Đẩy nội dung (icon) về bên phải */
+    position: relative; /* Thay đổi thành relative để căn chỉnh nội dung dễ hơn */
+    /* top: 50%; */ /* Bỏ top và transform y nếu không dùng absolute cho toàn bộ nút */
+    /* transform: translateY(-50%); */
+    right: 0; /* Giữ nguyên right nếu bạn muốn nó neo vào bên phải của li */
+    overflow: hidden; /* Ẩn phần text ban đầu */
+    font-weight: bold;
+    font-size: 1em; 
+    text-transform: none; /* Bỏ uppercase mặc định của nav-link */
+    cursor: pointer;
+    box-sizing: border-box; 
+    text-decoration: none; /* Đảm bảo không có gạch chân link */
+    padding-right: 10px; /* Thêm padding bên phải để icon không sát mép */
+    z-index: 500; /* Đảm bảo nút nằm trên các phần tử khác nếu cần */
+    
+    /* Thêm các thuộc tính sau để kiểm soát việc căn chỉnh nội dung */
+    white-space: nowrap; /* Ngăn không cho nội dung xuống dòng */
+}
+
+/* Icon định vị */
+.navbar .nav-item .nav-link.btn-retailer i {
+    /* Đổi vị trí icon từ absolute sang relative, để nó là một phần của luồng flex */
+    position: relative; /* Thay đổi từ absolute sang relative */
+    /* top: 50%; */ /* Bỏ top và transform y nếu không dùng absolute */
+    /* right: 10px; */ /* Bỏ right nếu dùng flexbox */
+    /* transform: translateY(-50%); */
+    right: 5px;
+    font-size: 1.2em; /* Kích thước icon */
+    color: white; /* Màu trắng cho icon */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động */
+    z-index: 2; /* Đảm bảo icon nằm trên text ban đầu (nếu có lớp phủ) */
+    margin-right: 0; /* Đảm bảo không có margin thừa ban đầu */
+    flex-shrink: 0; /* Ngăn icon bị co lại */
+}
+
+/* Text "Tìm nhà bán lẻ" */
+.navbar .nav-item .nav-link.btn-retailer::after {
+    content: "Tìm nhà bán lẻ"; /* Văn bản sẽ hiện ra */
+    /* Đổi vị trí text từ absolute sang relative và căn chỉnh bằng flexbox */
+    position: relative; /* Thay đổi từ absolute sang relative */
+    /* top: 50%; */ /* Bỏ top và transform y nếu không dùng absolute */
+    /* left: 20px; */ /* Bỏ left nếu dùng flexbox */
+    /* transform: translateY(-50%); */
+    color: white;
+    opacity: 0; /* Ban đầu ẩn chữ */
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Ngăn chữ xuống dòng */
+    z-index: 1; /* Đảm bảo text nằm dưới icon ban đầu (nếu có lớp phủ) */
+    order: -1; /* Đặt chữ trước icon trong flex container */
+    margin-right: 8px; /* Khoảng cách giữa chữ và icon */
+    flex-grow: 1; /* Cho phép text mở rộng */
+    text-align: right; /* Căn chữ sang phải nếu cần, hoặc để mặc định */
+}
+
+/* Hiệu ứng khi rê chuột */
+.navbar .nav-item .nav-link.btn-retailer:hover {
+    background: linear-gradient(to right, #e68000, #e63d00); /* Hơi đậm hơn khi rê chuột */
+    width: 170px; /* Chiều rộng lớn hơn để chứa icon và text */
+    border-radius: 25px; /* Bo tròn vừa phải để trông như nút bình thường */
+    
+    /* Vị trí khi hover, vẫn neo bên phải và mở rộng sang trái */
+    /* right: 0; */ /* Giữ nguyên right nếu đã đặt ở trên */
+    /* transform: translateY(-50%); */ /* Giữ nguyên nếu đã đặt ở trên */
+    padding-left: 15px; /* Đảm bảo chữ không sát mép trái */
+    padding-right: 15px; /* Điều chỉnh padding phải cho cân đối */
+    justify-content: space-between; /* Đẩy chữ và icon ra hai phía */
+}
+
+.navbar .nav-item .nav-link.btn-retailer:hover i {
+    opacity: 1; /* Icon vẫn hiển thị */
+    /* right: 15px; */ /* Bỏ right nếu dùng flexbox */
+    /* transform: translateY(-50%); */
+    margin-right: 0; /* Đảm bảo không có margin thừa */
+}
+
+.navbar .nav-item .nav-link.btn-retailer:hover::after {
+    opacity: 1; /* Hiển thị chữ khi rê chuột */
+    /* left: 20px; */ /* Bỏ left nếu dùng flexbox */
+    /* transform: translateY(-50%); */
+}
+/* Các nút và thông tin URL trong Navbar */
+.location-button {
+    background-color: #FF6200;
+    color: #fff;
+    border: none;
+    padding: 8px 15px; /* Điều chỉnh padding cho nút */
+    border-radius: 5px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.location-button:hover {
+    background-color: #e65c00;
+}
+
+.url-section {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #666666;
+    font-size: 0.9em;
+    margin-left: 15px; /* Khoảng cách giữa nút và URL */
+}
+
+.url-section .domain {
+    font-weight: bold;
+}
+
+/* ============================ */
+/* Hero Section                 */
+/* ============================ */
+.hero {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    min-height: 550px; /* Đặt chiều cao tối thiểu cho phần hero */
+    margin-bottom: 0;
+    padding: 0 15px; /* Padding cho hero để nội dung không bị dính sát cạnh */
+    padding-top: 200px; /* Bù lại chiều cao của navbar fixed */
+    box-sizing: border-box; /* Cần thiết cho việc tính toán kích thước hộp chuẩn */
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0px; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-overlay video {
+    object-fit: cover; 
+    width: 100%;
+    height: 100%;
+}
+
+.hero-text-container {
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.hero-text-container h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    animation: FadeInOutFade 13s ease-in-out forwards;
+    position: relative;
+    opacity: 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Thêm đổ bóng để chữ dễ đọc hơn */
+}
+
+@keyframes FadeInOutFade {
+    0% { opacity: 0; }
+    30% { opacity: 0; }
+    40% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.hero-text-container p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.hero a.button:hover {
+    transition: 0.3s;
+    background-color: #2c60a0;
+    opacity: 1;
+}
+
+.hero a.button {
+    background-color: #182a46; 
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    position: absolute;
+    bottom: 30px; /* Đặt ở phía dưới */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; /* Đảm bảo nút ở trên video */
+    opacity: 0.3;
+}
+
+
+/* ============================ */
+/* Featured Cars Section        */
+/* ============================ */
+.container {
+    /* Các container của Bootstrap đã được định nghĩa tốt.
+        Bạn có thể thêm padding hoặc margin riêng nếu cần. */
+        width: 100%;
+}
+.container .row {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các cột xuống dòng trên màn hình nhỏ */
+    align-items: stretch; /* Đảm bảo các flex items (cột) căng đều chiều cao của flex container (row) */
+    margin-left: -15px; /* Điều chỉnh lại margin để bù padding của col nếu cần */
+    margin-right: -15px;
+}
+
+.text-white {
+    color: #ffffff !important; /* Đảm bảo màu chữ trắng trên nền đen */
+}
+
+/* Căn chỉnh chiều cao của các card xe */
+.row.align-items-stretch { /* Thêm class này vào HTML của .row chứa các card */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    display: flex; /* Biến cột thành flex container để các card bên trong có thể căng chiều cao */
+
+    flex-direction: column; /* Đảm bảo nội dung trong cột (card) xếp dọc */
+    padding: 15px; /* Thêm padding để tạo khoảng cách giữa các card */
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+}
+
+.mt-5 h2 {
+    color: white;
+    padding-bottom: 80px;
 }
 
 .card {
+    display: flex;
+    flex-direction: column; /* Đặt nội dung card xếp dọc */
+    height: 100%; /* Đảm bảo card chiếm toàn bộ chiều cao của cột */
     border: 1px solid #ddd;
     border-radius: 5px;
     overflow: hidden;
     margin-bottom: 20px;
+    background-color: #fff; /* Đảm bảo màu nền trắng cho card */
+    color: #333; /* Màu chữ mặc định cho card */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Thêm bóng nhẹ cho card */
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Hiệu ứng nâng nhẹ khi hover */
 }
 
 .card-img-top {
     width: 100%;
-    display: block;
+    height: 200px; /* Đặt chiều cao cố định cho ảnh để nó đều nhau */
+    object-fit: cover; /* Đảm bảo ảnh không bị méo */
+  
 }
 
 .card-body {
     padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Cho phép card-body mở rộng để lấp đầy không gian còn lại */
+    justify-content: space-between; /* Căn chỉnh nội dung (title, text, button) */
 }
 
 .card-title {
     font-size: 1.5em;
     margin-bottom: 10px;
+    min-height: 1.2em; /* Đảm bảo tiêu đề có chiều cao tối thiểu để căn đều */
 }
 
-.btn-primary {
-    background-color: #182a46;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    display: inline-block;
-    transition: background-color 0.3s ease;
+.card-text {
+    flex-grow: 1; /* Cho phép mô tả mở rộng */
+    margin-bottom: 15px;
+    line-height: 1.5;
 }
 
-.btn-primary:hover {
-    background-color: #2c60a0;
+.card-body .btn-primary {
+    margin-top: auto; /* Đẩy nút xuống cuối card-body */
+    width: 100%; /* Nút chiếm toàn bộ chiều rộng */
+    text-align: center;
 }
-    
+
+/* ============================ */
+/* Slideshow Section            */
+/* ============================ */
 .slideshow-container {
     max-width: 1000px;
     position: relative;
     margin: auto;
-    height: 400px;
+    height: 400px; /* Chiều cao cố định của slideshow */
     padding-left: 10px;
     padding-right: 10px;
     box-sizing: border-box;
+    background-color: #333; /* Màu nền cho container slideshow */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .slide {
@@ -132,6 +441,7 @@ main {
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
+    background-color: rgba(0,0,0,0.5);
 }
 
 .next {
@@ -146,6 +456,7 @@ main {
 .dot-container {
     text-align: center;
     padding: 20px 0;
+    
 }
 
 .dot {
@@ -163,44 +474,402 @@ main {
     background-color: #717171;
 }
 
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: #f8f9fa;
-    border-top: 1px solid #ddd;
+/* ============================ */
+/* Footer                       */
+/* ============================ */
+.site-footer {
+    background-color: #222222; /* Màu nền footer */
+    color: #cccccc; /* Màu chữ mặc định */
+    padding: 60px 0 30px;
+    font-family: 'Times New Roman', Times, serif;
+    margin-top: 50px; /* Khoảng cách từ nội dung chính đến footer */
 }
 
-.main-container {
-    max-width: 1600px; 
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 10px;
-    padding-right: 10px; 
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px; /* Padding cho nội dung footer */
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các cột xuống dòng trên màn hình nhỏ */
+    justify-content: space-between;
+    gap: 30px; /* Khoảng cách giữa các cột footer */
 }
 
-.video-overlay {
-    position: absolute; /* Định vị tuyệt đối */
-    top: 20;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    display: flex; /* Sử dụng flex để căn giữa video */
-    align-items: center; /* Căn giữa video theo chiều dọc */
-    justify-content: center; /* Căn giữa video theo chiều ngang */
+.footer-column {
+    flex: 1; /* Cho phép các cột tự co giãn */
+    min-width: 200px; /* Chiều rộng tối thiểu cho mỗi cột */
+    max-width: 30%; /* Chiều rộng tối đa cho mỗi cột trên desktop */
 }
 
-.video-overlay video {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    border-top-left-radius: 50px;
+.footer-column.about-mclaren {
+    min-width: 250px; /* Cột 'VỀ MCLAREN' có thể rộng hơn một chút */
 }
 
-.container {
-    width: 100%; /* Để container con chiếm toàn bộ chiều rộng của .main-container */
+.footer-column h3 {
+    color: #f0f0f0;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* Đường kẻ dưới tiêu đề */
+    padding-bottom: 10px;
 }
 
-.container .mt-5 {
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: #cccccc;
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #e10600; /* Màu đỏ McLaren khi hover */
+}
+
+.footer-logo {
     margin-top: 50px;
+    margin-bottom: 30px;
+    text-align: center; /* Căn giữa logo footer */
+    width: 100%; /* Chiếm toàn bộ chiều rộng để logo có thể căn giữa */
+}
+
+.footer-logo img {
+    height: 70px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333333;
+    padding-top: 30px;
+    margin-top: 40px;
+    text-align: center; /* Căn giữa nội dung footer-bottom */
+    color: #888888;
+    font-size: 0.85em;
+    flex-direction: column; /* Đảm bảo nội dung xếp chồng trên mobile */
+    align-items: center;
+}
+
+.footer-bottom-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Căn giữa các link */
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.footer-bottom-links ul li a {
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom-links ul li a:hover {
+    color: #e10600;
+}
+
+/* ============================ */
+/* Contact Page Specific Styles */
+/* ============================ */
+.contact-info {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.contact-info h3 {
+    color: #182a46;
+    margin-bottom: 15px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+}
+
+.contact-form {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* ============================ */
+/* Cars Page Specific Styles    */
+/* ============================ */
+.cars-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Tăng khoảng cách giữa các xe */
+    justify-content: center;
+    padding: 20px;
+    margin-top: 30px; /* Khoảng cách từ header */
+}
+
+.car {
+    flex: 0 1 250px; /* Điều chỉnh kích thước cơ sở để các xe không quá nhỏ hoặc quá lớn */
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #333; /* Nền tối cho mỗi ô xe */
+    color: #eee; /* Chữ sáng */
+    text-align: center;
+    text-decoration: none; /* Loại bỏ gạch chân của link */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.car:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.car a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    text-decoration: none; /* Đảm bảo link không có gạch chân */
+    color: inherit; /* Kế thừa màu chữ từ .car */
+}
+
+.car img {
+    width: 100%;
+    height: 180px; /* Chiều cao cố định cho ảnh xe để các ô đều nhau */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.car img:hover {
+    transform: scale(1.05);
+}
+
+.car-info {
+    padding: 15px;
+}
+
+.car-info h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    color: #FF6200; /* Màu nổi bật cho tên xe */
+}
+
+.car-info p {
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+/* ============================ */
+/* Car Details Page Specific Styles */
+/* ============================ */
+.car-detail-section {
+    padding-top: 100px; /* Bù lại chiều cao của navbar cố định */
+    padding-bottom: 50px;
+    background-color: #111; /* Nền tối cho trang chi tiết xe */
+    color: #eee; /* Chữ sáng */
+}
+
+.car-detail-container {
+    background-color: #222;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+#main-car-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 20px auto; /* Căn giữa và tạo khoảng cách */
+}
+
+.thumbnail-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.thumbnail-gallery img {
+    width: 100px; /* Kích thước thumbnail */
+    height: 70px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.thumbnail-gallery img:hover {
+    border-color: #FF6200;
+    transform: scale(1.05);
+}
+
+.car-specs ul, .car-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.car-specs ul li, .car-features ul li {
+    background-color: #333;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex; /* Dùng flex để căn chỉnh nội dung */
+    justify-content: space-between; /* Đẩy key và value ra hai phía */
+    align-items: center;
+}
+
+.car-specs ul li strong {
+    color: #FF6200;
+    min-width: 120px; /* Đảm bảo key có đủ không gian */
+}
+
+.car-description p {
+    line-height: 1.6;
+    text-align: justify;
+}
+
+/* ============================ */
+/* Retailers Page Specific Styles */
+/* ============================ */
+#map {
+    height: 500px; /* Chiều cao của bản đồ */
+    width: 100%;
+    margin-top: 30px; /* Khoảng cách từ header */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.retailers-list {
+    margin-top: 40px;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.retailer-item {
+    background-color: #333;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    color: #eee;
+    transition: transform 0.2s ease;
+}
+
+.retailer-item:hover {
+    transform: translateY(-5px);
+}
+
+.retailer-item h3 {
+    color: #FF6200;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.retailer-item p {
+    margin-bottom: 5px;
+    font-size: 0.95em;
+}
+
+.retailer-item a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.retailer-item a:hover {
+    text-decoration: underline;
+}
+
+/* ============================ */
+/* General Button Styles        */
+/* ============================ */
+.btn-primary {
+    background-color: #182a46;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2c60a0;
+}
+
+/* ============================ */
+/* Switch Button (If used)      */
+/* ============================ */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+    border: 2px solid #000000;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px; /* Điều chỉnh vị trí của núm trượt */
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #FF6200; /* Màu khi bật */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #FF6200;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
 }

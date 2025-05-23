@@ -1,20 +1,137 @@
-/* CSS External - Các media queries cho responsive design */
+/* css/responsive.css */
+
+/* ============================ */
+/* Responsive Design (max-width: 768px) */
+/* ============================ */
 @media (max-width: 768px) {
-    .hero {
-        padding: 50px 0;
+    /* Navbar adjustments */
+    .navbar-brand img {
+        height: 50px; /* Logo nhỏ hơn trên mobile */
     }
-    .hero h1 {
-        font-size: 2em;
-    }
+
     .navbar-nav {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: column; /* Các mục menu xếp dọc */
+        align-items: flex-start; /* Căn trái các mục menu */
+        width: 100%; /* Đảm bảo menu chiếm toàn bộ chiều rộng khi mở */
+        padding: 10px 0; /* Padding cho menu khi mở */
     }
+
     .nav-item {
-        margin-left: 0;
-        margin-bottom: 10px;
-    }
-    .col-md-4 {
+        margin-left: 0 !important; /* Xóa margin-left trên mobile */
+        margin-bottom: 10px; /* Khoảng cách giữa các mục menu */
         width: 100%;
+        text-align: left; /* Căn trái text */
+    }
+
+    .nav-link {
+        padding: 8px 15px; /* Tăng vùng chạm cho link */
+    }
+
+    .d-flex.ms-3.align-items-center { /* Nhóm nút và URL */
+        flex-direction: column; /* Xếp chồng nút và URL */
+        align-items: flex-start !important; /* Căn trái */
+        margin-left: 0 !important;
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .location-button {
+        width: 100%; /* Nút chiếm toàn bộ chiều rộng */
+        margin-bottom: 10px; /* Khoảng cách giữa nút và URL */
+        margin-right: 0 !important;
+    }
+
+    .url-section {
+        width: 100%;
+        text-align: left;
+        margin-left: 0 !important;
+    }
+
+    /* Hero Section adjustments */
+    .hero {
+        min-height: 300px; /* Chiều cao nhỏ hơn trên mobile */
+        padding-top: 80px; /* Đảm bảo vẫn bù trừ cho navbar */
+    }
+
+    .hero-text-container h1 {
+        font-size: 2em; /* Tiêu đề nhỏ hơn */
+    }
+
+    .hero-text-container p {
+        font-size: 1em; /* Đoạn văn nhỏ hơn */
+    }
+
+    /* Featured Cars Section adjustments */
+    .col-md-4 {
+        width: 100%; /* Các card xe chiếm toàn bộ chiều rộng trên mobile */
+    }
+
+    /* Slideshow adjustments */
+    .slideshow-container {
+        height: 300px; /* Chiều cao nhỏ hơn trên mobile */
+    }
+
+    /* Footer adjustments */
+    .footer-container {
+        flex-direction: column; /* Các cột footer xếp dọc */
+        align-items: center; /* Căn giữa các cột */
+        gap: 20px; /* Khoảng cách giữa các cột */
+    }
+
+    .footer-column {
+        max-width: 100%; /* Các cột footer chiếm toàn bộ chiều rộng */
+        text-align: center; /* Căn giữa nội dung cột */
+    }
+
+    .footer-column h3 {
+        text-align: center; /* Căn giữa tiêu đề cột */
+    }
+
+    .footer-column ul {
+        align-items: center; /* Căn giữa các mục list */
+    }
+
+    .footer-bottom-links ul {
+        flex-direction: column; /* Các link footer xếp dọc */
+        gap: 10px;
+        align-items: center; /* Căn giữa các link */
+    }
+}
+
+/* ============================ */
+/* Responsive Design (max-width: 576px) - Smallest screens */
+/* ============================ */
+@media (max-width: 576px) {
+    .navbar {
+        height: auto; /* Cho phép navbar co giãn theo nội dung trên màn hình rất nhỏ */
+    }
+
+    .hero {
+        min-height: 250px;
+    }
+
+    .hero-text-container h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-text-container p {
+        font-size: 0.9em;
+    }
+
+    .location-button {
+        padding: 6px 10px;
+        font-size: 0.85em;
+    }
+
+    .url-section {
+        font-size: 0.8em;
+    }
+
+    .slideshow-container {
+        height: 250px;
+    }
+
+    .car-info h4 {
+        font-size: 1.1em;
     }
 }
