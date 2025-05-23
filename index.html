@@ -4,93 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>McLaren Việt Nam - Hiệu Suất Đỉnh Cao</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
 
-    <style>
-      
-.hero {
-    position: relative; /* Cần thiết cho việc định vị tuyệt đối các phần tử con */
-    overflow: hidden; /* Để ẩn phần chữ chạy khi biến mất */
-    display: flex;
-    align-items: center; /* Căn giữa theo chiều dọc */
-    justify-content: center; /* Căn giữa theo chiều ngang */
-    min-height: 480px; /* Đặt chiều cao cố định cho phần hero */
-    margin-bottom: 0; /* Loại bỏ margin dưới hero */
-    box-sizing: none;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top:200px;
-   
-
-}
-
-.hero-text-container {
-    text-align: center;
-    color: #fff;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-    overflow: hidden;
-    width: 100%;
-    padding-left: 10px; /* Lề trái 2cm */
-    padding-right: 10px; /* Lề phải 2cm */
-    box-sizing: border-box; /* Đảm bảo padding không làm tăng tổng chiều rộng */
-    z-index: 3;
-}
-
-.hero-text-container h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-    animation: FadeInOutFade 13s ease-in-out forwards; /* Đã đổi tên animation */
-    position: relative;
-    opacity: 0;
-}
-
-@keyframes FadeInOutFade {
-    0% { opacity: 0; }
-    30% { opacity: 0; }
-    40% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-.hero-text-container p {
-    font-size: 1.2em;
-    margin-top: 0;
-    opacity: 0.8; /* Để chữ "Hiệu suất..." mờ hơn một chút (tùy chọn) */
-}
-
-.hero a.button {
-    background-color: #182a46; 
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    position: absolute;
-    bottom: 30px; /* Đặt ở phía dưới */
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 2; /* Đảm bảo nút ở trên video */
-    opacity: 0.3;
-}
-.hero a.button:hover{
-    transition: 0.3s;
-    background-color: #2c60a0;
-    opacity: 1;
-}
-
-
-
-
-
-
-
-    </style>
 </head>
 <body>
     <header>
@@ -102,59 +23,65 @@
                 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" href="index.html">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
                         <li class="nav-item"><a class="nav-link" href="cars.html">Xe McLaren</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="admin/admin.html">Admin</a></li>
+                        <li class="nav-item">
+                           <a class="nav-link btn-retailer" href="retailers.html">
+                            <i class="fas fa-map-marker-alt"></i> 
+                        </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-
     <div class="main-container">
         <main>
             <section class="hero">
-                <div class="hero-text-container">
-                    <h1>Khám Phá Thế Giới McLaren</h1>
-                </div>
-                <div class="video-overlay" style="border-radius: 20%;">
-                    <video autoplay loop muted >
+                <div class="video-overlay">
+                    <video autoplay muted loop playsinline>
                         <source src="video/McLaren 720S RR1000 - Wild Supercar by Ramon Performance.mp4" type="video/mp4">
+                        
                     </video>
                 </div>
-                <a href="cars.html" class="button">Xem các mẫu xe</a>
+                <div class="hero-text-container ">
+                    <h1>McLaren Việt Nam</h1>
+                    
+                </div>
+                <a href="cars.html" class="button">Khám phá xe của chúng tôi</a>
             </section>
+
             <section class="container mt-5">
-                <h2 style="color: #fff;">Các Mẫu Xe Nổi Bật</h2>
+                <h2 class="text-center text-white mb-4">Các mẫu xe nổi bật</h2>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="images/720S-Coupe_hero_crop-16x9.webp" class="card-img-top" alt="McLaren 720S">
+                            <img src="images/720s-6.jpg" class="card-img-top" alt="McLaren 720S">
                             <div class="card-body">
                                 <h5 class="card-title">McLaren 720S</h5>
-                                <p class="card-text">Siêu xe với hiệu suất đáng kinh ngạc.</p>
-                                <a href="car-details.html" class="btn btn-primary">Xem chi tiết</a>
+                                <p class="card-text">Sức mạnh vượt trội và thiết kế khí động học.</p>
+                                <a href="car-details.html?model=720s" class="btn btn-primary">Xem chi tiết</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="images/2023031033_Artura_Highlight_Hero.webp" class="card-img-top" alt="McLaren Artura">
-                            <div class="card-body">
-                                <h5 class="card-title">McLaren Artura</h5>
-                                <p class="card-text">Siêu xe hybrid thế hệ mới.</p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card">
-                            <img src="images/Hero-ext_front-3_4_dark__doors_FINAL-1.jpg-2-1-1024x609.jpg" class="card-img-top" alt="McLaren Senna">
+                            <img src="images/senna-3.jpg" class="card-img-top" alt="McLaren Senna">
                             <div class="card-body">
                                 <h5 class="card-title">McLaren Senna</h5>
-                                <p class="card-text">Siêu xe tập trung vào đường đua.</p>
-                                <a href="#" class="btn btn-primary">Xem chi tiết</a>
+                                <p class="card-text">Được tạo ra cho đường đua, không thỏa hiệp.</p>
+                                <a href="car-details.html?model=senna" class="btn btn-primary">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="images/artura-2.jpg" style="height: 200px;" alt="McLaren Artura">
+                            <div class="card-body">
+                                <h5 class="card-title">McLaren Artura</h5>
+                                <p class="card-text">Sự kết hợp hoàn hảo giữa điện khí hóa và hiệu suất.</p>
+                                <a href="car-details.html?model=artura" class="btn btn-primary">Xem chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -162,7 +89,7 @@
             </section>
 
             <section class="mt-5">
-                <h2>Bộ Sưu Tập Ảnh</h2>
+                <h2 style="text-align: center;">Bộ Sưu Tập Ảnh</h2>
                 <div class="slideshow-container">
                     <div class="slide">
                         <img src="images/hinh1.jnp.webp" style="width:100%">
@@ -192,13 +119,69 @@
             </section>
         </main>
     </div>
+    
 
-    <footer class="bg-light text-center py-3 mt-5">
-        <p>&copy; 2025 McLaren Việt Nam. All rights reserved.</p>
+    <footer class="site-footer mt-5">
+        <div class="footer-container">
+            <div class="footer-column about-mclaren">
+                <h3>VỀ MCLAREN</h3>
+                <ul>
+                    <li><a href="#">Lịch sử McLaren</a></li>
+                    <li><a href="#">Công nghệ</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#">Sự kiện</a></li>
+                    <li><a href="#">Di sản</a></li>
+                    <li><a href="#">Nhà máy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column explore-cars">
+                <h3>KHÁM PHÁ CÁC MẪU XE</h3>
+                <ul>
+                    <li><a href="#">Supercars</a></li>
+                    <li><a href="#">Ultimate Series</a></li>
+                    <li><a href="#">Đã qua sử dụng</a></li>
+                    <li><a href="#">Phiên bản giới hạn</a></li>
+                    <li><a href="#">Tùy chỉnh</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contact-us">
+                <h3>LIÊN HỆ</h3>
+                <ul>
+                    <li><a href="contact.html">Liên hệ với chúng tôi</a></li>
+                    <li><a href="#">Yêu cầu</a></li>
+                    <li><a href="retailers.html">Tìm nhà bán lẻ</a></li>
+                    <li><a href="#">Hỗ trợ bên đường</a></li>
+                </ul>
+            </div>
+            <div class="footer-column follow-us">
+                <h3>THEO DÕI CHÚNG TÔI</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/McLarenRacing" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/mclaren/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/user/McLarenAutomotive" target="_blank">YouTube</a></li>
+                    <li><a href="https://x.com/McLarenIOW" target="_blank">X</a></li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+        <div class="footer-container footer-bottom">
+            <div class="footer-bottom-links">
+                <ul>
+                    <li><a href="#">CHÍNH SÁCH COOKIE</a></li>
+                    <li><a href="#">BÁO CÁO KHOẢNG CÁCH GIỚI TÍNH</a></li>
+                    <li><a href="#">CHÍNH SÁCH BẢO MẬT</a></li>
+                    <li><a href="#">ĐIỀU KHOẢN VÀ ĐIỀU KIỆN</a></li>
+                    <li><a href="#">TUYÊN BỐ CHỐNG CHẾ ĐỘ NÔ LỆ</a></li>
+                </ul>
+            </div>
+            <p>© 2025 McLaren Automotive Limited. Đã đăng ký Bản quyền. Tất cả các quyền được bảo lưu.</p>
+        </div>
     </footer>
 
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="js/slideshow.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

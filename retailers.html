@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Nhà Bán Lẻ McLaren tại Việt Nam</title>
+    <link rel="stylesheet" href="css/style.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            background-color: #000; /* Changed to black */
+            color: #fff; /* Changed to white for readability */
+            padding-top: 80px; /* Để tránh header cố định che mất nội dung */
+        }
+        header {
+            background-color: #1a1a1a; /* Darker header background */
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            height: 80px;
+            z-index: 1000;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            justify-content: space-between;
+        }
+
+        /* Ensure navbar itself adapts to dark theme if it's within header */
+        header .navbar {
+            background-color: transparent !important; /* Override Bootstrap's bg-light */
+            width: 100%; /* Ensure navbar takes full width inside header */
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            height: 60px; /* Adjusted height for better fit within 80px header */
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng */
+        }
+
+        nav .navbar-nav {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav .nav-item {
+            margin-left: 20px;
+        }
+
+        nav .nav-link {
+            text-decoration: none;
+            color: #fff; /* Changed to white */
+            text-transform: uppercase;
+            font-family: Arial, Helvetica, sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        nav .nav-link:hover {
+            color: #ff0000;
+        }
+
+        .map-container {
+            width: 100%;
+            max-width: 1200px; /* Giới hạn chiều rộng bản đồ */
+            height: 600px; /* Chiều cao của bản đồ */
+            margin: 50px auto; /* Căn giữa và tạo khoảng trống */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Darker shadow */
+            border-radius: 12px;
+            overflow: hidden; /* Đảm bảo bản đồ không tràn ra khỏi border-radius */
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        .retailer-list {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #1a1a1a; /* Dark background for list */
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Darker shadow */
+        }
+
+        .retailer-list h2 {
+            color: #e10600;
+            border-bottom: 2px solid #e10600;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .retailer-item {
+            padding: 15px 0;
+            border-bottom: 1px dashed #444; /* Lighter dashed line */
+            color: #ccc; /* Lighter text for item content */
+        }
+
+        .retailer-item:last-child {
+            border-bottom: none;
+        }
+
+        .retailer-item h3 {
+            color: #eee; /* Lighter heading color */
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .retailer-item p {
+            color: #bbb; /* Lighter paragraph color */
+            margin-bottom: 5px;
+        }
+
+        .retailer-item a {
+            color: #7cb3ff; /* Lighter link color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .retailer-item a:hover {
+            color: #a4d8ff; /* Lighter hover color */
+        }
+
+        footer {
+            background-color: #1a1a1a; /* Dark footer background */
+            color: #fff; /* White text for footer */
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/mclaren-logo-512x512.png" alt="McLaren Logo" height="100">
+                </a>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cars.html">Xe McLaren</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mt-5">
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+
+        <div class="retailer-list">
+            <h2>Danh sách các nhà bán lẻ chính thức tại Việt Nam</h2>
+            <div id="retailers-info">
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer mt-5">
+        <div class="footer-container">
+            <div class="footer-column about-mclaren">
+                <h3>VỀ MCLAREN</h3>
+                <ul>
+                    <li><a href="#">Lịch sử McLaren</a></li>
+                    <li><a href="#">Công nghệ</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#">Sự kiện</a></li>
+                    <li><a href="#">Di sản</a></li>
+                    <li><a href="#">Nhà máy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column explore-cars">
+                <h3>KHÁM PHÁ CÁC MẪU XE</h3>
+                <ul>
+                    <li><a href="#">Supercars</a></li>
+                    <li><a href="#">Ultimate Series</a></li>
+                    <li><a href="#">Đã qua sử dụng</a></li>
+                    <li><a href="#">Phiên bản giới hạn</a></li>
+                    <li><a href="#">Tùy chỉnh</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contact-us">
+                <h3>LIÊN HỆ</h3>
+                <ul>
+                    <li><a href="contact.html">Liên hệ với chúng tôi</a></li>
+                    <li><a href="#">Yêu cầu</a></li>
+                    <li><a href="retailers.html">Tìm nhà bán lẻ</a></li>
+                    <li><a href="#">Hỗ trợ bên đường</a></li>
+                </ul>
+            </div>
+            <div class="footer-column follow-us">
+                <h3>THEO DÕI CHÚNG TÔI</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/McLarenRacing" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/mclaren/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/user/McLarenAutomotive" target="_blank">YouTube</a></li>
+                    <li><a href="https://x.com/McLarenIOW" target="_blank">X</a></li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+        <div class="footer-container footer-bottom">
+            <div class="footer-bottom-links">
+                <ul>
+                    <li><a href="#">CHÍNH SÁCH COOKIE</a></li>
+                    <li><a href="#">BÁO CÁO KHOẢNG CÁCH GIỚI TÍNH</a></li>
+                    <li><a href="#">CHÍNH SÁCH BẢO MẬT</a></li>
+                    <li><a href="#">ĐIỀU KHOẢN VÀ ĐIỀU KIỆN</a></li>
+                    <li><a href="#">TUYÊN BỐ CHỐNG CHẾ ĐỘ NÔ LỆ</a></li>
+                </ul>
+            </div>
+            <p>&copy; 2025 McLaren Automotive Limited. Đã đăng ký Bản quyền. Tất cả các quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Danh sách các nhà bán lẻ McLaren tại Việt Nam (ví dụ)
+        const retailers = [
+            {
+                name: "McLaren Ho Chi Minh City",
+                address: "Số 1, Đường Lê Duẩn, Quận 1, TP. Hồ Chí Minh",
+                phone: "028 1234 5678",
+                website: "https://www.mclaren.com/vn/",
+                lat: 10.7788,
+                lng: 106.6976 // Tọa độ ví dụ gần Dinh Độc Lập
+            },
+            {
+                name: "McLaren Ha Noi",
+                address: "Số 2, Đường Bà Triệu, Quận Hoàn Kiếm, Hà Nội",
+                phone: "024 9876 5432",
+                website: "https://www.mclaren.com/vn/",
+                lat: 21.0278,
+                lng: 105.8545 // Tọa độ ví dụ gần Hồ Gươm
+            }
+            // Thêm các nhà bán lẻ khác tại đây
+        ];
+
+        function initMap() {
+            const mapOptions = {
+                center: { lat: 14.0583, lng: 108.2772 }, // Trung tâm Việt Nam
+                zoom: 6, // Mức zoom ban đầu
+                styles: [ /* Optional: Add map styling for dark theme if desired */
+                    { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+                    { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+                    { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+                    {
+                        featureType: "administrative.locality",
+                        elementType: "labels.text.fill",
+                        stylers: [{ color: "#d59563" }],
+                    },
+                    {
+                        featureType: "poi",
+                        elementType: "labels.text.fill",
+                        stylers: [{ color: "#d59563" }],
+                    },
+                    {
+                        featureType: "poi.park",
+                        elementType: "geometry",
+                        stylers: [{ color: "#263c3f" }],
+                    },
+                    {
+                        featureType: "poi.park",
+                        elementType: "labels.text.fill",
+                        stylers: [{ color: "#6b9a76" }],
+                    },
+                    {
+                        featureType: "road",
+                        elementType: "geometry",
+                        stylers: [{ color: "#38414e" }],
+                    },
+                    {
+                        featureType: "road",
+                        elementType: "geometry.stroke",
+                        stylers: [{ color: "#212a37" }],
+                    },
+                    {
+                        featureType: "road",
+                        elementType: "labels.text.fill",
+                        stylers: [{ color: "#9ca5b3" }],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "geometry",
+                        stylers: [{ color: "#746855" }],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "geometry.stroke",
+                        stylers: [{ color: "#1f2835" }],
+                    },
+                    {
+                        featureType: "road.highway",
+                        elementType: "labels.text.fill",
+                        stylers: [{ color: "#f3d19c" }],
+                    },
+                    {
+                        featureType: "transit",
+                        elementType: "geometry",
+                        stylers: [{ color: "#2f3948" }],
+                    },
+                    {
+                        featureType: "transit.station",
+                        elementType: "labels.text.fill",
+                        stylers: [{ color: "#d59563" }],
+                    },
+                    {
+                        featureType: "water",
+                        elementType: "geometry",
+                        stylers: [{ color: "#17263c" }],
+                    },
+                    {
+                        featureType: "water",
+                        elementType: "labels.text.fill",
+                        stylers: [{ color: "#515c6d" }],
+                    },
+                    {
+                        featureType: "water",
+                        elementType: "labels.text.stroke",
+                        stylers: [{ color: "#17263c" }],
+                    },
+                ]
+            };
+
+            const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            const retailersInfoDiv = document.getElementById('retailers-info');
+
+            retailers.forEach(retailer => {
+                const marker = new google.maps.Marker({
+                    position: { lat: retailer.lat, lng: retailer.lng },
+                    map: map,
+                    title: retailer.name,
+                    // Optional: Custom marker icon for dark theme
+                    // icon: 'path/to/your/custom-dark-marker.png' 
+                });
+
+                const infoWindowContent = `
+                    <div style="font-family: sans-serif; padding: 5px; color: #333;"> <h4>${retailer.name}</h4>
+                        <p>${retailer.address}</p>
+                        <p>Điện thoại: ${retailer.phone}</p>
+                        <p><a href="${retailer.website}" target="_blank">Website</a></p>
+                    </div>
+                `;
+
+                const infoWindow = new google.maps.InfoWindow({
+                    content: infoWindowContent
+                });
+
+                marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                });
+
+                // Thêm thông tin vào danh sách bên dưới bản đồ
+                const retailerItem = document.createElement('div');
+                retailerItem.classList.add('retailer-item');
+                retailerItem.innerHTML = `
+                    <h3>${retailer.name}</h3>
+                    <p>Địa chỉ: ${retailer.address}</p>
+                    <p>Điện thoại: ${retailer.phone}</p>
+                    <p><a href="${retailer.website}" target="_blank">Truy cập Website</a></p>
+                `;
+                retailersInfoDiv.appendChild(retailerItem);
+            });
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&callback=initMap"></script>
+</body>
+</html>

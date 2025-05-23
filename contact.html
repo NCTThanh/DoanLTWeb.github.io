@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liên hệ với McLaren Việt Nam</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         /* Thêm CSS tùy chỉnh cho trang liên hệ nếu cần */
+        /* Giữ nguyên các CSS bạn đã có */
         .contact-info {
             margin-top: 30px;
             padding: 20px;
             background-color: #f8f9fa;
             border-radius: 5px;
             border: 1px solid #ddd;
+            color: #333;
         }
 
         .contact-info h3 {
@@ -74,64 +76,170 @@
         }
         .container h1 
         {
-                text-align: center;
+            text-align: center;
         }
-                
-   
-.navbar-brand {
-    display: flex;
-    align-items: center;
-}
 
-.navbar-brand img {
-    height: 100px; /* Chiều cao logo */
-    vertical-align: middle;
-    margin-right: 10px; /* Thêm khoảng cách giữa logo và chữ (nếu có) */
-}
+        /* Thêm CSS cho thông báo */
+        #formMessage {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            display: none; /* Ban đầu ẩn đi */
+        }
 
-nav .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        #formMessage.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
 
-nav .navbar-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
+        #formMessage.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
 
-nav .nav-item {
-    margin-left: 20px;
-}
+        /* CSS cho footer, lấy từ các file trước đó để đồng bộ */
+        .site-footer {
+            background-color: #222222; /* Màu nền footer */
+            color: #cccccc; /* Màu chữ mặc định */
+            padding: 60px 0 30px; /* Padding trên dưới và dưới */
+            font-family: 'Times New Roman', Times, serif; /* Font chữ */
+        }
 
-nav .nav-link {
-    text-decoration: none;
-    color: #060505;
-    transition: color 0.3s ease;
-}
+        .footer-container {
+            max-width: 1200px; /* Giới hạn chiều rộng nội dung footer */
+            margin: 0 auto; /* Căn giữa footer */
+            padding: 0 20px; /* Padding hai bên */
+            display: flex; /* Dùng flexbox để chia cột */
+            flex-wrap: wrap; /* Cho phép các cột xuống dòng trên màn hình nhỏ */
+            justify-content: space-between; /* Đẩy các cột ra xa nhau */
+            gap: 30px; /* Khoảng cách giữa các cột */
+        }
 
-nav .nav-link:hover {
-    color: #ff0000;
-}
-        
+        .footer-column {
+            flex: 1; /* Các cột chiếm không gian bằng nhau */
+            min-width: 200px; /* Chiều rộng tối thiểu của mỗi cột */
+            max-width: 30%; /* Giới hạn chiều rộng tối đa của mỗi cột (điều chỉnh nếu cần) */
+        }
+        .footer-column.about-mclaren {
+            min-width: 250px; /* Cột đầu tiên có thể rộng hơn một chút */
+        }
+
+        .footer-column h3 {
+            color: #f0f0f0; /* Màu tiêu đề cột */
+            font-size: 1.1em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-column ul {
+            list-style: none; /* Bỏ dấu chấm đầu dòng */
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px; /* Khoảng cách giữa các mục */
+        }
+
+        .footer-column ul li a {
+            color: #cccccc; /* Màu chữ link */
+            text-decoration: none; /* Bỏ gạch chân link */
+            font-size: 0.95em;
+            transition: color 0.3s ease; /* Hiệu ứng chuyển màu khi rê chuột */
+        }
+
+        .footer-column ul li a:hover {
+            color: #e10600; /* Màu đỏ McLaren khi rê chuột */
+        }
+
+        .footer-logo {
+            margin-top: 50px; /* Khoảng cách trên logo */
+            margin-bottom: 30px; /* Khoảng cách dưới logo */
+        }
+
+        .footer-logo img {
+            height: 70px; /* Kích thước logo */
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333; /* Đường kẻ phân cách */
+            padding-top: 30px;
+            margin-top: 40px;
+            text-align: left;
+            color: #888888; /* Màu chữ phần bản quyền */
+            font-size: 0.85em;
+        }
+
+        .footer-bottom-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex; /* Dùng flexbox để các link nằm ngang */
+            flex-wrap: wrap; /* Cho phép xuống dòng nếu hết chỗ */
+            gap: 20px; /* Khoảng cách giữa các link */
+            margin-bottom: 15px; /* Khoảng cách dưới các link */
+        }
+
+        .footer-bottom-links ul li a {
+            color: #888888;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links ul li a:hover {
+            color: #e10600;
+        }
+
+        /* Responsive adjustments for footer */
+        @media (max-width: 992px) {
+            .footer-column {
+                max-width: 45%; /* 2 cột trên màn hình vừa */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-column {
+                flex: 1 1 100%; /* Mỗi cột chiếm 100% chiều rộng trên màn hình nhỏ */
+                max-width: 100%;
+                margin-bottom: 30px; /* Khoảng cách giữa các cột khi xuống dòng */
+            }
+            .footer-column:last-of-type {
+                margin-bottom: 0;
+            }
+            .footer-container {
+                flex-direction: column; /* Đảm bảo các cột xếp chồng lên nhau */
+                align-items: flex-start; /* Căn lề trái các cột */
+            }
+            .footer-bottom-links ul {
+                flex-direction: column; /* Các link ở dưới xếp chồng lên nhau */
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .footer-bottom {
+                text-align: left; /* Đảm bảo căn trái trên màn hình nhỏ */
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="../index.html">
+                <a class="navbar-brand" href="index.html">
                     <img src="images/mclaren-logo-512x512.png" alt="McLaren Logo" height="100">
                 </a>
-               
+                
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
                         <li class="nav-item"><a class="nav-link" href="cars.html">Xe McLaren</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="contact.html">Liên hệ</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../admin/admin.html">Admin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
+                        
                     </ul>
                 </div>
             </div>
@@ -141,20 +249,20 @@ nav .nav-link:hover {
     <div class="main-container">
         <main class="pt-5">
             <section class="container">
-                <h1>Liên hệ với McLaren Việt Nam</h1>
-                <p class="lead" style="text-align: center;">Chúng tôi rất sẵn lòng hỗ trợ bạn. Vui lòng điền vào biểu mẫu dưới đây hoặc liên hệ trực tiếp với chúng tôi theo thông tin sau:</p>
+                <h1 style="color: white;">Liên hệ với McLaren Việt Nam</h1>
+                <p class="lead" style="text-align: center; color: #888888; ">Chúng tôi rất sẵn lòng hỗ trợ bạn. Vui lòng điền vào biểu mẫu dưới đây hoặc liên hệ trực tiếp với chúng tôi theo thông tin sau:</p>
 
                 <div class="row">
                     <div class="col-md-6 contact-info">
                         <h3>Thông tin liên hệ</h3>
                         <p><strong>Địa chỉ:</strong> Số 49 Cao Lỗ, Phường 04, Quận 8, Thành phố Hồ Chí Minh</p>
                         <p><strong>Điện thoại:</strong> 0251778899 </p>
-                        <p><strong>Email:</strong> <a href="mailto:[địa chỉ email]">mclarenvn@gmail.com</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:mclarenvn@gmail.com">mclarenvn@gmail.com</a></p>
                         <p><strong>Giờ làm việc:</strong> 9h00-17h00</p>
                     </div>
                     <div class="col-md-6 contact-form">
                         <h3>Gửi tin nhắn cho chúng tôi</h3>
-                        <form action="#" method="POST">
+                        <form id="contactForm"> 
                             <div class="form-group">
                                 <label for="name">Tên của bạn:</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
@@ -169,58 +277,167 @@ nav .nav-link:hover {
                             </div>
                             <div class="form-group">
                                 <label for="subject">Vấn đề hỗ trợ:</label>
-                                <select name="form-control" id="subject" name="subject">
+                                <select class="form-control" id="subject" name="subject"> 
                                     <option value="">-- Vui lòng chọn một vấn đề --</option>
-        <optgroup label="Thông tin sản phẩm">
-            <option value="thong_so_ky_thuat">Thông số kỹ thuật của xe</option>
-            <option value="cac_phien_ban_xe">Các phiên bản và tùy chọn</option>
-            <option value="gia_ca_va_khuyen_mai">Giá cả và chương trình khuyến mãi</option>
-            <option value="mau_sac_noi_that_ngoai_that">Màu sắc nội thất và ngoại thất</option>
-            <option value="tinh_nang_cong_nghe">Tính năng và công nghệ trên xe</option>
-            <option value="phu_kien_chinh_hang">Phụ kiện chính hãng</option>
-        </optgroup>
-        <optgroup label="Bảo hành và sửa chữa">
-            <option value="thoi_gian_bao_hanh">Thời gian và điều kiện bảo hành</option>
-            <option value="dich_vu_bao_duong">Dịch vụ bảo dưỡng định kỳ</option>
-            <option value="sua_chua_va_phu_tung">Sửa chữa và phụ tùng thay thế</option>
-            <option value="dat_lich_hen_dich_vu">Đặt lịch hẹn dịch vụ</option>
-            <option value="ho_tro_su_co">Hỗ trợ sự cố trên đường</option>
-        </optgroup>
-        <optgroup label="Đặt hàng và thanh toán">
-            <option value="quy_trinh_dat_hang">Quy trình đặt hàng xe mới</option>
-            <option value="cac_hinh_thuc_thanh_toan">Các hình thức thanh toán</option>
-            <option value="thu_tuc_mua_xe_tra_gop">Thủ tục mua xe trả góp</option>
-            <option value="thay_doi_huy_bo_don_hang">Thay đổi hoặc hủy bỏ đơn hàng</option>
-            <option value="thoi_gian_giao_xe">Thời gian giao xe dự kiến</option>
-        </optgroup>
-        <optgroup label="Vận chuyển và giao nhận">
-            <option value="hinh_thuc_van_chuyen">Hình thức vận chuyển xe</option>
-            <option value="kiem_tra_xe_khi_nhan">Kiểm tra xe khi nhận bàn giao</option>
-            <option value="thu_tuc_dang_ky_xe">Thủ tục đăng ký và biển số xe</option>
-        </optgroup>
-        <option value="khac">Khác</option>
+                                    <optgroup label="Thông tin sản phẩm">
+                                        <option value="thong_so_ky_thuat">Thông số kỹ thuật của xe</option>
+                                        <option value="cac_phien_ban_xe">Các phiên bản và tùy chọn</option>
+                                        <option value="gia_ca_va_khuyen_mai">Giá cả và chương trình khuyến mãi</option>
+                                        <option value="mau_sac_noi_that_ngoai_that">Màu sắc nội thất và ngoại thất</option>
+                                        <option value="tinh_nang_cong_nghe">Tính năng và công nghệ trên xe</option>
+                                        <option value="phu_kien_chinh_hang">Phụ kiện chính hãng</option>
+                                    </optgroup>
+                                    <optgroup label="Bảo hành và sửa chữa">
+                                        <option value="thoi_gian_bao_hanh">Thời gian và điều kiện bảo hành</option>
+                                        <option value="dich_vu_bao_duong">Dịch vụ bảo dưỡng định kỳ</option>
+                                        <option value="sua_chua_va_phu_tung">Sửa chữa và phụ tùng thay thế</option>
+                                        <option value="dat_lich_hen_dich_vu">Đặt lịch hẹn dịch vụ</option>
+                                        <option value="ho_tro_su_co">Hỗ trợ sự cố trên đường</option>
+                                    </optgroup>
+                                    <optgroup label="Đặt hàng và thanh toán">
+                                        <option value="quy_trinh_dat_hang">Quy trình đặt hàng xe mới</option>
+                                        <option value="cac_hinh_thuc_thanh_toan">Các hình thức thanh toán</option>
+                                        <option value="thu_tuc_mua_xe_tra_gop">Thủ tục mua xe trả góp</option>
+                                        <option value="thay_doi_huy_bo_don_hang">Thay đổi hoặc hủy bỏ đơn hàng</option>
+                                        <option value="thoi_gian_giao_xe">Thời gian giao xe dự kiến</option>
+                                    </optgroup>
+                                    <optgroup label="Vận chuyển và giao nhận">
+                                        <option value="hinh_thuc_van_chuyen">Hình thức vận chuyển xe</option>
+                                        <option value="kiem_tra_xe_khi_nhan">Kiểm tra xe khi nhận bàn giao</option>
+                                        <option value="thu_tuc_dang_ky_xe">Thủ tục đăng ký và biển số xe</option>
+                                    </optgroup>
+                                    <option value="khac">Khác</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="message">Nội dung tin nhắn:</label>
                                 <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                            </div >
-                            <div style="text-align: center;">
-                                <button type="submit" class="btn btn-contact" >Gửi tin nhắn</button>
                             </div>
-                            
+                            <div style="text-align: center;">
+                                <button type="submit" class="btn btn-contact">Gửi tin nhắn</button>
+                            </div>
                         </form>
+                        <div id="formMessage"></div>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <footer class="bg-light text-center py-3 mt-5">
-        <p style="text-align: center;">&copy; 2025 McLaren Việt Nam. All rights reserved.</p>
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="confirmationModalLabel">Thông tin bạn đã gửi</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modalInfoBody">
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button> 
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="site-footer mt-5">
+        <div class="footer-container">
+            <div class="footer-column about-mclaren">
+                <h3>VỀ MCLAREN</h3>
+                <ul>
+                    <li><a href="#">Lịch sử McLaren</a></li>
+                    <li><a href="#">Công nghệ</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#">Sự kiện</a></li>
+                    <li><a href="#">Di sản</a></li>
+                    <li><a href="#">Nhà máy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column explore-cars">
+                <h3>KHÁM PHÁ CÁC MẪU XE</h3>
+                <ul>
+                    <li><a href="#">Supercars</a></li>
+                    <li><a href="#">Ultimate Series</a></li>
+                    <li><a href="#">Đã qua sử dụng</a></li>
+                    <li><a href="#">Phiên bản giới hạn</a></li>
+                    <li><a href="#">Tùy chỉnh</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contact-us">
+                <h3>LIÊN HỆ</h3>
+                <ul>
+                    <li><a href="contact.html">Liên hệ với chúng tôi</a></li>
+                    <li><a href="#">Yêu cầu</a></li>
+                    <li><a href="retailers.html">Tìm nhà bán lẻ</a></li>
+                    <li><a href="#">Hỗ trợ bên đường</a></li>
+                </ul>
+            </div>
+            <div class="footer-column follow-us">
+                <h3>THEO DÕI CHÚNG TÔI</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/McLarenRacing" target="_blank">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/mclaren/" target="_blank">Instagram</a></li>
+                    <li><a href="https://www.youtube.com/user/McLarenAutomotive" target="_blank">YouTube</a></li>
+                    <li><a href="https://x.com/McLarenIOW" target="_blank">X</a></li>
+                </ul>
+            </div>
+        </div>
+
+        
+
+        <div class="footer-container footer-bottom">
+            <div class="footer-bottom-links">
+                <ul>
+                    <li><a href="#">CHÍNH SÁCH COOKIE</a></li>
+                    <li><a href="#">BÁO CÁO KHOẢNG CÁCH GIỚI TÍNH</a></li>
+                    <li><a href="#">CHÍNH SÁCH BẢO MẬT</a></li>
+                    <li><a href="#">ĐIỀU KHOẢN VÀ ĐIỀU KIỆN</a></li>
+                    <li><a href="#">TUYÊN BỐ CHỐNG CHẾ ĐỘ NÔ LỆ</a></li>
+                </ul>
+            </div>
+            <p>© 2025 McLaren Automotive Limited. Đã đăng ký Bản quyền. Tất cả các quyền được bảo lưu.</p>
+        </div>
     </footer>
 
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Ngăn chặn form gửi đi theo cách truyền thống
+
+            const form = event.target;
+            const formData = new FormData(form); // Lấy tất cả dữ liệu từ form
+            const formMessage = document.getElementById('formMessage'); // Div để hiển thị thông báo
+
+            // Ẩn thông báo cũ và xóa nội dung
+            formMessage.style.display = 'none';
+            formMessage.className = '';
+            formMessage.innerHTML = '';
+
+            fetch('send_email.php', { // Gửi dữ liệu đến send_email.php
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text()) // Đọc phản hồi dưới dạng text
+            .then(data => {
+                // 'data' sẽ chứa chuỗi "✅ Gửi email thành công!" hoặc "❌ Gửi thất bại: ..." từ PHP
+                if (data.includes('✅ Gửi email thành công!')) {
+                    formMessage.classList.add('success');
+                    formMessage.innerHTML = '✅ Gửi tin nhắn thành công! Cảm ơn bạn đã liên hệ.';
+                    form.reset(); // Xóa form sau khi gửi thành công
+                } else {
+                    formMessage.classList.add('error');
+                    formMessage.innerHTML = data; // Hiển thị thông báo lỗi từ PHP
+                }
+                formMessage.style.display = 'block'; // Hiển thị thông báo
+            })
+            .catch(error => {
+                // Xử lý lỗi nếu fetch không thành công
+                formMessage.classList.add('error');
+                formMessage.innerHTML = 'Đã xảy ra lỗi khi gửi yêu cầu. Vui lòng thử lại sau.';
+                formMessage.style.display = 'block'; // Hiển thị thông báo lỗi
+                console.error('Lỗi khi gửi form:', error);
+            });
+        });
+    </script>
 </body>
 </html>
